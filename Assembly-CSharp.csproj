@@ -54,8 +54,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Miner\ShaftMiner.cs" />
-    <Compile Include="Assets\Scripts\Miner\BaseMiner.cs" />
     <Compile Include="Assets\Scripts\Extras\Deposit.cs" />
+    <Compile Include="Assets\Scripts\Miner\BaseMiner.cs" />
+    <Compile Include="Assets\Scripts\Shaft\Shaft.cs" />
+    <Compile Include="Assets\Scripts\Shaft\ShaftUI.cs" />
+    <Compile Include="Assets\Scripts\Managers\ShaftManager.cs" />
+    <Compile Include="Assets\Scripts\Extras\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Extras\IClickable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

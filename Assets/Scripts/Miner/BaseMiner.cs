@@ -4,21 +4,18 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
-public class BaseMiner : MonoBehaviour
+public class BaseMiner : MonoBehaviour, IClickable
 {
-    [SerializeField] protected Transform miningLocation;
-    [SerializeField] protected Transform depositLocation;
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected Deposit shaftDeposit;
-
     [Header("Initial Values")]
     [SerializeField] private float initialCollectCapacity;
     [SerializeField] private float initialCollectPerSecond;
+    [SerializeField] protected float moveSpeed;
 
     public float CurrentGold { get; set; }
     public float CollectCapacity { get; set; }
     public float CollectPerSecond { get; set; }
     public bool IsTimeCollect { get; set; }
+    public bool MinerClicked {get;set;}
 
     protected Animator _animator;
 
@@ -31,6 +28,21 @@ public class BaseMiner : MonoBehaviour
         CollectCapacity = initialCollectCapacity;
         CollectPerSecond = initialCollectPerSecond;
     }
+
+    private void OnMouseDown()
+    {
+        if (!MinerClicked)
+        {
+            OnClick();
+            MinerClicked = true;
+        }
+    }
+
+    public virtual void OnClick()
+    {
+
+    }
+
     protected virtual void MoveMiner(Vector3 newPosition)
     {
         transform.DOMove(newPosition, moveSpeed).SetEase(Ease.Linear).OnComplete((() => 
@@ -45,15 +57,6 @@ public class BaseMiner : MonoBehaviour
             }
 
         })).Play();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector3 xPos = new Vector3(miningLocation.position.x, transform.position.y);
-            MoveMiner(xPos);
-        }
     }
 
     protected virtual void CollectGold()

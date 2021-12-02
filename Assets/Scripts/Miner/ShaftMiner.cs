@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class ShaftMiner : BaseMiner
 {
+    public Shaft CurrentShaft { get; set; }
+
+    public Vector3 DepositLocation => new Vector3(CurrentShaft.DepositLocation.position.x, transform.position.y);
+    public Vector3 MiningLocation => new Vector3(CurrentShaft.MiningLocation.position.x, transform.position.y);
+
     private int walkAnimation = Animator.StringToHash(name: "Walk");
     private int miningAnimation = Animator.StringToHash(name: "Mining");
+
+    public override void OnClick()
+    {
+        MoveMiner(MiningLocation);
+    }
+
     protected override void MoveMiner(Vector3 newPosition)
     {
         base.MoveMiner(newPosition);
@@ -25,18 +36,16 @@ public class ShaftMiner : BaseMiner
         CurrentGold = gold;
         ChangeGoal();
         RotateMiner(direction: -1);
-        Vector3 depositPos = new Vector3(depositLocation.position.x, transform.position.y);
-        MoveMiner(depositPos);
+        MoveMiner(DepositLocation);
     }
 
     protected override void DepositGold()
     {
-        shaftDeposit.DepositGold(CurrentGold);
+        CurrentShaft.ShaftDeposit.DepositGold(CurrentGold);
 
         CurrentGold = 0;
         ChangeGoal();
         RotateMiner(direction: 1);
-        Vector3 xPos = new Vector3(miningLocation.position.x, transform.position.y);
-        MoveMiner(xPos);
+        MoveMiner(MiningLocation);
     }
 }
