@@ -44,3 +44,6 @@ TagManager:
   - name: Miner
     uniqueID: 2940546329
     locked: 0
+  - name: Shaft
+    uniqueID: 1025605595
+    locked: 0
