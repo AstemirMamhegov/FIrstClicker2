@@ -11,6 +11,7 @@ public class ShaftManager : Singleton<ShaftManager>
 
     [SerializeField] private List<Shaft> shafts;
 
+    public List<Shaft> Shafts => shafts;
     public float ShaftCost { get; set; }
 
     private int _currentShaftIndex;
