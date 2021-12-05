@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 987640773241303711}
   - component: {fileID: 987640773241303710}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Gold - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

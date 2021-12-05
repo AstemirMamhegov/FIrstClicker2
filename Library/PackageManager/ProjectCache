@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637740010994174190
-    m_Hash: 3737777759
+      ticks: 637741668258587287
+    m_Hash: 258548626
   m_LockFileStatus:
     m_FilePath: C:/UnRepo/FIC/FIrstClicker2/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637740010994244000
-    m_Hash: 2390669526
+      ticks: 637741668258587287
+    m_Hash: 1195163694
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

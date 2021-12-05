@@ -26,8 +26,12 @@ public class ShaftUI : MonoBehaviour
 
     public void AddShaft()
     {
-        ShaftManager.Instance.AddShaft();
-        newShaftButton.SetActive(false);
+        if (GoldManager.Instance.CurrentGold >= ShaftManager.Instance.ShaftCost)
+        {
+            GoldManager.Instance.RemoveGold(ShaftManager.Instance.ShaftCost);
+            ShaftManager.Instance.AddShaft();
+            newShaftButton.SetActive(false);
+        }
     }
 
     public void SetShaftUI(int ID)
