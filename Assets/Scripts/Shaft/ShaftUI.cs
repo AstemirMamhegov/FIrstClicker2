@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class ShaftUI : MonoBehaviour
 {
+    public static Action OnUpgradeRequest;
+
     [SerializeField] private TextMeshProUGUI depositGold;
     [SerializeField] private TextMeshProUGUI shaftID;
     [SerializeField] private TextMeshProUGUI shaftLevel;
@@ -32,6 +35,16 @@ public class ShaftUI : MonoBehaviour
             ShaftManager.Instance.AddShaft();
             newShaftButton.SetActive(false);
         }
+    }
+
+    public void OpenUpgradeContainer()
+    {
+        if(OnUpgradeRequest != null)
+        {
+            OnUpgradeRequest.Invoke();
+        }
+
+        OnUpgradeRequest?.Invoke();
     }
 
     public void SetShaftUI(int ID)
