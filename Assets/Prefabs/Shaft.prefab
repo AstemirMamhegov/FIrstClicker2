@@ -321,7 +321,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 987640771664202364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 987640771798903034}
+        m_TargetAssemblyTypeName: ShaftUI, Assembly-CSharp
+        m_MethodName: OpenUpgradeContainer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &987640771759187477
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +480,7 @@ GameObject:
   - component: {fileID: 987640771798902983}
   - component: {fileID: 987640771798903033}
   - component: {fileID: 987640771798903034}
+  - component: {fileID: 8710473093964250205}
   m_Layer: 0
   m_Name: Shaft
   m_TagString: Untagged
@@ -578,6 +591,23 @@ MonoBehaviour:
   shaftLevel: {fileID: 987640772475969016}
   newShaftCost: {fileID: 987640772214834792}
   newShaftButton: {fileID: 987640771759187477}
+--- !u!114 &8710473093964250205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987640771798902982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c39f77889658a140aaa2965255f5d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectCapacityMultiplier: 2
+  collectPerSecondMultiplier: 2
+  moveSpeedMultiplier: 1.25
+  initiallUpgradeCost: 600
+  upgradeCostMultiplier: 2
 --- !u!1 &987640772196096193
 GameObject:
   m_ObjectHideFlags: 0

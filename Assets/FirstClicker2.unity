@@ -433,6 +433,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeContainer: {fileID: 4475632877891821284}
+  panelMinerImage: {fileID: 4475632877976144364}
+  panelTitle: {fileID: 4475632876999590243}
+  level: {fileID: 1794658298179882353}
+  nextBoost: {fileID: 3453891298554632995}
+  upgradeCost: {fileID: 4475632877038112747}
+  progressBar: {fileID: 8676999915177576701}
+  upgradeButtons:
+  - {fileID: 4475632877958836004}
+  - {fileID: 4475632878884535703}
+  - {fileID: 4475632879084812169}
+  - {fileID: 4475632878932529297}
+  buttonDisableColor: {r: 0.63529414, g: 0.63529414, b: 0.63529414, a: 1}
+  buttonEnableColor: {r: 1, g: 1, b: 1, a: 1}
+  stats:
+  - {fileID: 5442896631986267303}
+  - {fileID: 564023546}
+  - {fileID: 361152019}
+  - {fileID: 801979679}
+  stat1Title: {fileID: 2254293354622688068}
+  stat2Title: {fileID: 211639346}
+  stat3Title: {fileID: 2030371807}
+  stat4Title: {fileID: 1605079344}
+  stat1CurrentValue: {fileID: 9083765837040739066}
+  stat2CurrentValue: {fileID: 1590563486}
+  stat3CurrentValue: {fileID: 735436046}
+  stat4CurrentValue: {fileID: 592933881}
+  stat1UpgradeValue: {fileID: 5426351515367797461}
+  stat2UpgradeValue: {fileID: 1489475962}
+  stat3UpgradeValue: {fileID: 650875241}
+  stat4UpgradeValue: {fileID: 773147026}
+  stat1Icon: {fileID: 7581394589143188026}
+  stat2Icon: {fileID: 713096399}
+  stat3Icon: {fileID: 1409733125}
+  stat4Icon: {fileID: 928756651}
+  shaftMinerInfo: {fileID: 11400000, guid: f98cea55bffba4c43a1f1691732e075f, type: 2}
+  elevatorMinerInfo: {fileID: 11400000, guid: 6e30ef09923307a47bc5fe087c8a7f42, type: 2}
+  warehouseMinerInfo: {fileID: 11400000, guid: d6f12167ccba0d145805770be78e5f1e, type: 2}
 --- !u!4 &99502884
 Transform:
   m_ObjectHideFlags: 0
@@ -529,7 +566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 127033915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1770216189}
+        m_TargetAssemblyTypeName: WarehouseUI, Assembly-CSharp
+        m_MethodName: OpenWarehouseUpgradePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &127033915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +695,7 @@ GameObject:
   - component: {fileID: 211639347}
   - component: {fileID: 211639346}
   m_Layer: 5
-  m_Name: StatName - TMP
+  m_Name: Stat2Name - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,7 +783,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -828,6 +877,7 @@ GameObject:
   - component: {fileID: 312316446}
   - component: {fileID: 312316447}
   - component: {fileID: 312316448}
+  - component: {fileID: 312316449}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -866,6 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depositLocation: {fileID: 1676237642}
   elevatorDeposit: {fileID: 1164489867}
+  miner: {fileID: 65071913}
 --- !u!114 &312316448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +930,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevatorDepositGoldText: {fileID: 1043564374}
+  currentLevel: {fileID: 974631419}
+--- !u!114 &312316449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312316445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8e6ddb353875c45b01f5ada4f4cc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectCapacityMultiplier: 2
+  collectPerSecondMultiplier: 2
+  moveSpeedMultiplier: 2
+  initiallUpgradeCost: 600
+  upgradeCostMultiplier: 2
 --- !u!1 &361152019
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,9 +981,9 @@ RectTransform:
   m_Father: {fileID: 4475632878203341689}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -370}
   m_SizeDelta: {x: 730, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &404580914
@@ -1029,7 +1098,7 @@ GameObject:
   - component: {fileID: 514231731}
   - component: {fileID: 514231730}
   m_Layer: 5
-  m_Name: StatContainer
+  m_Name: Stat2Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,7 +1258,7 @@ GameObject:
   - component: {fileID: 550772148}
   - component: {fileID: 550772147}
   m_Layer: 5
-  m_Name: StatContainer
+  m_Name: Stat3Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1287,9 +1356,9 @@ RectTransform:
   m_Father: {fileID: 4475632878203341689}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -230}
   m_SizeDelta: {x: 730, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &592933879
@@ -1304,7 +1373,7 @@ GameObject:
   - component: {fileID: 592933882}
   - component: {fileID: 592933881}
   m_Layer: 5
-  m_Name: Current - TMP
+  m_Name: Current4- TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1461,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1438,7 +1507,7 @@ GameObject:
   - component: {fileID: 650875242}
   - component: {fileID: 650875241}
   m_Layer: 5
-  m_Name: NewLevel - TMP
+  m_Name: NewLevel3 - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1526,7 +1595,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1572,7 +1641,7 @@ GameObject:
   - component: {fileID: 713096400}
   - component: {fileID: 713096399}
   m_Layer: 5
-  m_Name: Stat - Image
+  m_Name: Stat2 - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,7 +1816,7 @@ GameObject:
   - component: {fileID: 735436047}
   - component: {fileID: 735436046}
   m_Layer: 5
-  m_Name: Current - TMP
+  m_Name: Current3- TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1835,7 +1904,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2057,7 +2126,7 @@ GameObject:
   - component: {fileID: 773147027}
   - component: {fileID: 773147026}
   m_Layer: 5
-  m_Name: NewLevel - TMP
+  m_Name: NewLevel4 - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2145,7 +2214,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2212,9 +2281,9 @@ RectTransform:
   m_Father: {fileID: 4475632878203341689}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -510}
   m_SizeDelta: {x: 730, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &869091297
@@ -2289,7 +2358,7 @@ GameObject:
   - component: {fileID: 928756652}
   - component: {fileID: 928756651}
   m_Layer: 5
-  m_Name: Stat - Image
+  m_Name: Stat4 - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2394,7 +2463,7 @@ GameObject:
   - component: {fileID: 974631420}
   - component: {fileID: 974631419}
   m_Layer: 5
-  m_Name: ShaftLevel - TMP
+  m_Name: ElevatorLevel - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2699,7 +2768,7 @@ GameObject:
   - component: {fileID: 1127214246}
   - component: {fileID: 1127214245}
   m_Layer: 5
-  m_Name: StatContainer
+  m_Name: Stat4Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2793,7 +2862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718842d2b293c544c91a1f2760761881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testGold: 10000
+  testGold: 1000000
 --- !u!4 &1148929273
 Transform:
   m_ObjectHideFlags: 0
@@ -3288,7 +3357,7 @@ GameObject:
   - component: {fileID: 1409733126}
   - component: {fileID: 1409733125}
   m_Layer: 5
-  m_Name: Stat - Image
+  m_Name: Stat3 - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3351,17 +3420,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409733123}
   m_CullTransparentMesh: 0
---- !u!114 &1419033567 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 987640771798903034, guid: 577866710a03bd84ab35ea588eccba46, type: 3}
-  m_PrefabInstance: {fileID: 987640773473066712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3675ad27b5397d4091bf73ebfe03fe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1474796739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,7 +3462,7 @@ GameObject:
   - component: {fileID: 1489475963}
   - component: {fileID: 1489475962}
   m_Layer: 5
-  m_Name: NewLevel - TMP
+  m_Name: NewLevel2 - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3492,7 +3550,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -3613,7 +3671,7 @@ GameObject:
   - component: {fileID: 1590563487}
   - component: {fileID: 1590563486}
   m_Layer: 5
-  m_Name: Current - TMP
+  m_Name: Current2 - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3701,7 +3759,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -3817,7 +3875,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596434815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 312316448}
+        m_TargetAssemblyTypeName: ElevatorUI, Assembly-CSharp
+        m_MethodName: OpenElevatorUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1596434815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,7 +3938,7 @@ GameObject:
   - component: {fileID: 1605079345}
   - component: {fileID: 1605079344}
   m_Layer: 5
-  m_Name: StatName - TMP
+  m_Name: Stat4Name - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3956,7 +4026,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -4148,6 +4218,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1770216188}
   - component: {fileID: 1770216187}
+  - component: {fileID: 1770216190}
+  - component: {fileID: 1770216189}
   m_Layer: 0
   m_Name: Warehouse
   m_TagString: Untagged
@@ -4188,6 +4260,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770216189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770216186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e49905283b9c8d4791ce9b330b4d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770216190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770216186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f66eb01ba5702419613a26dade181a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectCapacityMultiplier: 2
+  collectPerSecondMultiplier: 2
+  moveSpeedMultiplier: 2
+  initiallUpgradeCost: 600
+  upgradeCostMultiplier: 2
 --- !u!1 &1918189095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4391,7 @@ GameObject:
   - component: {fileID: 2030371808}
   - component: {fileID: 2030371807}
   m_Layer: 5
-  m_Name: StatName - TMP
+  m_Name: Stat3Name - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4378,7 +4479,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -4585,7 +4686,7 @@ GameObject:
   - component: {fileID: 5616965976807819100}
   - component: {fileID: 9083765837040739066}
   m_Layer: 5
-  m_Name: Current - TMP
+  m_Name: Current 1- TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4603,7 +4704,7 @@ GameObject:
   - component: {fileID: 6411905329622375079}
   - component: {fileID: 7581394589143188026}
   m_Layer: 5
-  m_Name: Stat - Image
+  m_Name: Stat1 - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4672,7 +4773,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -4780,7 +4881,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -4998,7 +5099,7 @@ GameObject:
   - component: {fileID: 4475632876999590242}
   - component: {fileID: 4475632876999590243}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5209,7 +5310,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -5517,9 +5618,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1419033567}
-        m_TargetAssemblyTypeName: ShaftUI, Assembly-CSharp
-        m_MethodName: OpenUpgradeContainer
+      - m_Target: {fileID: 99502883}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: Upgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5961,7 +6062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4475632877891821286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6091,7 +6192,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4475632877958836000}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 99502883}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeX1
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &4475632877958836003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6150,9 +6263,9 @@ RectTransform:
   m_Father: {fileID: 4475632877311759805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1.25, y: -105}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &4475632877976144146
@@ -6698,7 +6811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4475632878884535699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 99502883}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeX10
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &4475632878884535697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6767,9 +6892,9 @@ RectTransform:
   m_Father: {fileID: 4475632877311759805}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 103.75, y: -105}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &4475632878884535703
@@ -7014,9 +7139,9 @@ RectTransform:
   m_Father: {fileID: 4475632877311759805}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 308.75, y: -105}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &4475632878932529297
@@ -7082,7 +7207,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4475632878932531053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 99502883}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeMax
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &4475632878932529299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7323,9 +7460,9 @@ RectTransform:
   m_Father: {fileID: 4475632877311759805}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 206.25, y: -105}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &4475632879084812169
@@ -7391,7 +7528,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4475632879084812165}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 99502883}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeX50
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &4475632879084812171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7470,7 +7619,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -7600,7 +7749,7 @@ GameObject:
   - component: {fileID: 7907369860509060296}
   - component: {fileID: 5852650944866587272}
   m_Layer: 5
-  m_Name: StatContainer
+  m_Name: Stat1Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7631,9 +7780,9 @@ RectTransform:
   m_Father: {fileID: 4475632878203341689}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -90}
   m_SizeDelta: {x: 730, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6872674400425094174
@@ -7775,7 +7924,7 @@ GameObject:
   - component: {fileID: 7302850867400904967}
   - component: {fileID: 5426351515367797461}
   m_Layer: 5
-  m_Name: NewLevel - TMP
+  m_Name: NewLevel1 - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7806,7 +7955,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.1
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -7841,7 +7990,7 @@ GameObject:
   - component: {fileID: 841231558784251939}
   - component: {fileID: 2254293354622688068}
   m_Layer: 5
-  m_Name: StatName - TMP
+  m_Name: Stat1Name - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7937,7 +8086,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

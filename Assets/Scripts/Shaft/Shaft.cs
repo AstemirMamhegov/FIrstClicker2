@@ -18,6 +18,9 @@ public class Shaft : MonoBehaviour
     public Transform DepositLocation => depositLocation;
     public Deposit ShaftDeposit { get; set; }
     public ShaftUI ShaftUI { get; set; }
+    public List<ShaftMiner> Miners => _miners;
+
+    private List<ShaftMiner> _miners = new List<ShaftMiner>();
 
     private void Awake()
     {
@@ -30,11 +33,20 @@ public class Shaft : MonoBehaviour
         CreateDeposit();
     }
 
-    private void CreateMiner()
+    public void CreateMiner()
     {
         ShaftMiner newMiner = Instantiate(minerPrefab, depositLocation.position, rotation: (Quaternion)Quaternion.identity);
         newMiner.CurrentShaft = this;
         newMiner.transform.SetParent(transform);
+
+        if(_miners.Count > 0)
+        {
+            newMiner.CollectCapacity = _miners[0].CollectCapacity;
+            newMiner.CollectPerSecond = _miners[0].CollectPerSecond;
+            newMiner.MoveSpeed = _miners[0].MoveSpeed;
+        }
+
+        _miners.Add(newMiner);
     }
 
     private void CreateDeposit()

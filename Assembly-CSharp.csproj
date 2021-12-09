@@ -68,7 +68,13 @@
     <Compile Include="Assets\Scripts\Extras\IClickable.cs" />
     <Compile Include="Assets\Scripts\Warehouse\Warehouse.cs" />
     <Compile Include="Assets\Scripts\Elevator\ElevatorUI.cs" />
-    <Compile Include="Assets\Scripts\Managers\UpdateManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\UpgradeManager.cs" />
+    <Compile Include="Assets\Scripts\Upgrade\UpgradePanelInfo.cs" />
+    <Compile Include="Assets\Scripts\Upgrade\BaseUpgrade.cs" />
+    <Compile Include="Assets\Scripts\Upgrade\ShaftUpgrade.cs" />
+    <Compile Include="Assets\Scripts\Upgrade\ElevatorUpgrade.cs" />
+    <Compile Include="Assets\Scripts\Upgrade\WarehouseUpgrade.cs" />
+    <Compile Include="Assets\Scripts\Warehouse\WarehouseUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

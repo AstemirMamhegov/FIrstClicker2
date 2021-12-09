@@ -16,17 +16,19 @@ public class BaseMiner : MonoBehaviour, IClickable
     public float CollectPerSecond { get; set; }
     public bool IsTimeCollect { get; set; }
     public bool MinerClicked {get;set;}
+    public float MoveSpeed { get; set; }
 
     protected Animator _animator;
 
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         IsTimeCollect = true;
 
         CollectCapacity = initialCollectCapacity;
         CollectPerSecond = initialCollectPerSecond;
+        MoveSpeed = moveSpeed;
     }
 
     private void OnMouseDown()
@@ -45,7 +47,7 @@ public class BaseMiner : MonoBehaviour, IClickable
 
     protected virtual void MoveMiner(Vector3 newPosition)
     {
-        transform.DOMove(newPosition, moveSpeed).SetEase(Ease.Linear).OnComplete((() => 
+        transform.DOMove(newPosition, MoveSpeed).SetEase(Ease.Linear).OnComplete((() => 
         {
             if (IsTimeCollect)
             {
